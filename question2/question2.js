@@ -35,7 +35,7 @@ while (true) {
 var tempDrinks = 0;
 var buyDrinks = drinks;
 //必要な本数から１づつ減らし、最小の買う本数を求める
-while (true) {
+while (true && needDrinks > 2) {
   tempDrinks = CountTheNumberOfDrinks (Number (buyDrinks));
   if (tempDrinks >= needDrinks && needDrinks > 2) {
     drinks = tempDrinks;
@@ -46,7 +46,5 @@ while (true) {
     break;
   }
 }
-console.log ('必要本数:' + String (needDrinks) + '本');
-console.log ('購入した本数:' + String (buyDrinks) + '本');
+console.log ('本数:' + String (needDrinks) + '本');
 console.log ('金額合計:' + String (buyDrinks * 100) + '円');
-console.log ('飲める本数:' + String (drinks) + '本');
