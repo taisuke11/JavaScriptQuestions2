@@ -42,8 +42,6 @@ class Store {
       }
       emptyBottles = emptyBottles % this.serviceConditionNumber + serviceDrinks;
     }
-    console.log ('サービス本数：' + String (serviceDrinks) + '本');
-    console.log ('現在の在庫：' + String (this.stockDrink) + '本');
     return emptyBottles;
   }
 
@@ -56,6 +54,10 @@ class Store {
     }
     return true;
   }
+  //現在の在庫
+  CurrentInventory () {
+    console.log ('現在の在庫：' + String (this.stockDrink) + '本');
+  }
 }
 
 let wantBuyDrinks = [1, 3, 20, 2, 60, 100];
@@ -65,6 +67,9 @@ let Stores = [new Store ('A店', 100, 3, 200), new Store ('B店', 200, 4, 100)];
 var storeEmptyBottles = [0, 0];
 for (let number of wantBuyDrinks) {
   for (let i of [0, 1]) {
+    //買ってから、サービスする本数を決めるので
+    //3本で1本を交換だから購入希望は4本だけど
+    //3本買った方がお得だから、3本しか買わないという事はしない。
     storeEmptyBottles[i] = Stores[i].EmptyBottlesByBuyDrinks (
       number,
       storeEmptyBottles[i]
@@ -79,6 +84,6 @@ for (let number of wantBuyDrinks) {
         break;
       }
     }
-    console.log ('空き瓶数：' + String (storeEmptyBottles[i]) + '本');
+    Stores[i].CurrentInventory ();
   }
 }
