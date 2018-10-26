@@ -1,5 +1,4 @@
 'use strict';
-console.log ('questison3');
 //お店の情報
 //在庫管理なので、意味合い的に考えて
 //空き瓶の変数は敢えてStoreの方で含んでいません。
