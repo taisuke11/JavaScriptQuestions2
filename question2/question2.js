@@ -14,11 +14,26 @@ function CountTheNumberOfDrinks (buyDrinks) {
   } while (emptyBottles > 2);
   return drinks;
 }
+//整数かどうかを判別する
+//負の整数については考慮しないものとする
+function isIntNumber (value) {
+  value = String (value);
+  if (/^\d+$/.test (value)) return Number (value);
+  return -1;
+}
 
-var needDrinks = window.prompt ('必要な本数を入力してください');
-var drinks = Number (needDrinks);
+var drinks = 0;
+while (true) {
+  var needDrinks = window.prompt ('必要な本数を入力してください');
+  drinks = isIntNumber (needDrinks);
+  if (drinks < 0) {
+    console.log ('正の整数を入力してください');
+  } else {
+    break;
+  }
+}
 var tempDrinks = 0;
-var buyDrinks = Number (needDrinks);
+var buyDrinks = drinks;
 //必要な本数から１づつ減らし、最小の買う本数を求める
 while (true) {
   tempDrinks = CountTheNumberOfDrinks (Number (buyDrinks));
